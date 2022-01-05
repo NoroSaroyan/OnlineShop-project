@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<event listener="#{productController.preloadData}" type="preRenderView"/>
+
+<h1>Catalog</h1>
+<button
+        type="button"
+        class="btn-ens-action btn-ens-style"
+        data-rel="4a9f99dc105">
+  Cart
+</button>
+
+<form id="productForm">
+  <form>
+    <command value="Add product" action="#{productController.createProduct}"/>
+  </form>
+  <Table var="product" value="#{productController.allProducts}">
+    <columns headerText="Id">
+      <outputText value="#{product.id}"/>
+    </columns>
+    <columns headerText="Name">
+      <outputText value="#{product.name}"/>
+    </columns>
+    <columns headerText="Description">
+      <outputText value="#{product.description}"/>
+    </columns>
+    <columns headerText="Category">
+      <th:outputText value="#{product.categoryName}"/>
+    </columns>
+    <columns headerText="Price">
+      <th:outputText value="#{product.price}"/>
+    </columns>
+    <columns headerText="Stock">
+      <th:outputText value="#{product.stock}"/>
+    </columns>
+    <columns headerText="Actions">
+      <command value="Add to cart" styleClass="ui-button-success" disabled="#{product.stock == 0}"
+               action="#{cartController.addToCart(product.id)}" update="productForm"/>
+      <command value="Edit" action="#{productController.editProduct(product)}"/>
+      <command value="Delete" styleClass="ui-button-danger"
+               action="#{productController.deleteProduct(product)}" update="productForm"/>
+    </columns>
+  </Table>
+</form>
+</body>
+</html>

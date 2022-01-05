@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Product</title>
+</head>
+
+<body>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <th:forEach var="product" items="${requestScope.products}">
+            <tr>
+                <th scope="row">
+                    <th:out value="${product.id}"/>
+                </th>
+                <td>
+                    <th:out value="${product.name}"/>
+                </td>
+                <td>
+                    <th:out value="${product.description}"/>
+                </td>
+                <td>
+                    <th:url value="/product/edit" var="productEditUrl">
+                        <th:param name="id" value="${product.id}"/>
+                    </th:url>
+                    <th:url value="/product/delete" var="productDeleteUrl">
+                        <th:param name="id" value="${product.id}"/>
+                    </th:url>
+                    <a class="btn btn-success" href="${productEditUrl}"><i class="fas fa-edit"></i></a>
+                    <a class="btn btn-danger" href="${productDeleteUrl}"><i class="far fa-trash-alt"></i></a>
+                </td>
+            </tr>
+        </th:forEach>
+        </tbody>
+    </table>
+    </table>
+</div>
+</body>
+</html>
