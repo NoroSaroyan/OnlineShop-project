@@ -30,10 +30,14 @@ public class MyUserDetailsService implements UserDetailsService {
 
     private Collection<GrantedAuthority> getGrantedAuthorities(User user) {
         Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-        if (user.getRoles().contains("ADMIN")) {
+       boolean exists = user.getRoles()
+                .stream()
+                .anyMatch(item -> item.getName().equals("ADMIN"));
+
+        if (exists) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
-        grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+        grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
         return grantedAuthorities;
     }
 }
