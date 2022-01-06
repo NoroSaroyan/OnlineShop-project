@@ -27,13 +27,10 @@ public class UserController {
 
     @GetMapping("/registration")
     public String registration(Model model) {
-//        if (securityService.isAuthenticated()) {
-//            return "redirect:/";
-//        }
-
+//TODO check if in return model is neede or not
         model.addAttribute("userForm", new User());
 
-        return "registration";
+        return "user/registration";
     }
 
     @PostMapping("/registration")
@@ -43,12 +40,9 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             return "user/registration";
         }
-
         userService.save(userForm);
-
 //        securityService.autoLogin(userForm.getUsername(), userForm.getPasswordConfirm());
-
-        return "redirect:/welcome";
+        return "redirect:/user/welcome";
     }
 
     @GetMapping("/login")
@@ -69,5 +63,10 @@ public class UserController {
     @GetMapping({"/", "/welcome"})
     public String welcome(Model model) {
         return "index";
+    }
+
+    @GetMapping("/home")
+    public String home(Model model){
+        return "user/home";
     }
 }

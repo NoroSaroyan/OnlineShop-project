@@ -1,10 +1,13 @@
 package ru.gb.service;
 
+import org.hibernate.internal.util.Cloneable;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import ru.gb.onlineshop.entity.User;
@@ -18,6 +21,9 @@ import java.util.Optional;
 public class UserService {
 
     private UserRepository userRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     public void setUserRepository(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -64,6 +70,8 @@ public class UserService {
     }
 
     public void save(User user) {
+        //TODO clone user object
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }
 }
