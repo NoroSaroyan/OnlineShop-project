@@ -1,32 +1,9 @@
-insert into users
-    (email, password, name, last_name)
-values ('testEmail', 'testpswrd', 'testname', 'test_lastname');
+INSERT INTO users (id, email, password, name, last_name)
+VALUES (1, 'test', '$2a$12$rmRQHO7NohxqJWEC9CiwB./uAvNq0hPYdsde6dD2h9lLkTJ2K5tdy', 'test', 'test');
 
-update users
-set email   = 'upd_Email',
-    password= 'upd_Password'
-where email = 'testEmail'
-  and password = 'testpswrd';
+insert into roles(id, name) value (1, 'USER');
+insert into roles(id, name) value (2, 'ADMIN');
+insert into roles(id, name) value (3, 'SUPER_ADMIN');
 
-delete
-from users
-where email = ''
-  and password = '';
-
-insert into roles(name) value ('USER');
-insert into roles(name) value ('ADMIN');
-insert into roles(name) value ('SUPER_ADMIN');
-
-select *
-from roles;
-
-insert into products (title, price, description)
-values ('book', '99.9', '"java for idiots(like meeee)"');
-update products
-SET title       = 'Book',
-    price       = '99.5',
-    description = '"Java for beginners"'
-where id = 1;
-
-select *
-from products;
+INSERT INTO user_role_relations (role_id, user_id)
+VALUES (1, 1);

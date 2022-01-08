@@ -31,13 +31,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/*").permitAll() // This will be your home screen URL
                     .antMatchers("/user","/user/*").permitAll()
-                    .antMatchers("/user/welcome","/user/welcome/*").permitAll()
+                    .antMatchers("/home/","/home/*").permitAll()
                     .antMatchers("/css/**").permitAll()
                     .antMatchers("/js/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .defaultSuccessUrl("/user/home") //configure screen after login success
+                    .defaultSuccessUrl("/home/")
                     .loginPage("/user/login")
                     .permitAll()
                 .and()

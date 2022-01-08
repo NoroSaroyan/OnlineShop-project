@@ -5,6 +5,8 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import ru.gb.onlineshop.entity.Cart;
 
+import java.util.Optional;
+
 @ComponentScan("ru.gb.entity.Cart")
 @Repository
 public interface CartRepository extends PagingAndSortingRepository<Cart, Long> {
@@ -20,5 +22,7 @@ public interface CartRepository extends PagingAndSortingRepository<Cart, Long> {
 //    @Transactional
 //    @Query(value = "insert into carts(productCount, product_id) values (:productCount, :product_id)", nativeQuery = true)
 //    Cart saveProductToCart(@Param("product_id") long product_id, @Param("productCount") long productCount);
+
+    Optional<Cart> findByUserId(Long userId);
 
 }

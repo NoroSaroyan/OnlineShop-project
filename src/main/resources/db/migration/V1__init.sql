@@ -24,7 +24,6 @@ create table user_role_relations
     foreign key (user_id) references users (id)
 );
 
-
 create table orders
 (
     id               int primary key auto_increment,
@@ -57,3 +56,22 @@ create table category_product_relations
     foreign key (category_id) references categories (id),
     foreign key (product_id) references products (id)
 );
+
+create table carts
+(
+    id int auto_increment primary key,
+    user_id int not null,
+
+    foreign key (user_id) references users (id)
+);
+
+create table cart_product_relations
+(
+    cart_id int not null,
+    product_id  int not null,
+
+    -- TODO check
+    foreign key (cart_id) references carts (id),
+    foreign key (product_id) references products (id)
+);
+
