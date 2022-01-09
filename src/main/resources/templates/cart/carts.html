@@ -19,11 +19,9 @@
                 <th>Product Id</th>
                 <th>products in cart:</th>
             </tr>
-            <tr th:each="cart: ${carts}">
+            <tr th:each="cart: ${cart}">
                 <td th:text="${cart.id}">
-                <td th:text="${cart.productId}">
-                <td th:text="${cart.countProduct}">
-
+                <td th:text="${cart.getUserId()}">
                 <th headerText="Actions">
 
                     <Button method="delete" action="#{cartController.delete(item.key)}"
