@@ -135,5 +135,9 @@
     <orderEntry type="library" name="Maven: org.flywaydb:flyway-core:8.3.0" level="project" />
     <orderEntry type="library" name="Maven: org.flywaydb:flyway-mysql:8.3.0" level="project" />
     <orderEntry type="library" name="Maven: com.vaadin.external.google:android-json:0.0.20131108.vaadin1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:bootstrap:4.1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:popper.js:1.14.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:font-awesome:5.0.10" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:3.3.1-1" level="project" />
   </component>
 </module>

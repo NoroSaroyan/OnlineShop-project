@@ -13,7 +13,7 @@ import ru.gb.onlineshop.service.ProductService;
 import java.util.List;
 
 @Controller
-@RequestMapping("/home")
+//@RequestMapping("/")
 public class HomeController {
     private ProductService productService;
 
@@ -26,7 +26,7 @@ public class HomeController {
         this.productService = productService;
     }
 
-    @GetMapping(value = {"/", "/index"})
+    @GetMapping(value = {"/", "/index", "/home"})
     public String home(Model model) {
         model.addAttribute("products", getAllProducts());
         model.addAttribute("productsCount", productsCount());

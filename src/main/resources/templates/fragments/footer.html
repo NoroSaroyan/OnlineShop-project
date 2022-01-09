@@ -8,15 +8,13 @@
     <div th:fragment="footer">
         <div class="container">
             <footer>
-                <span th:text="#{footer.copyright}"></span>
                 <span>
                     <a th:href="@{/about}" th:text="#{about.name}"></a>
                 </span>
                 <label>
                     <select class="custom-select" id="select-lang">
                         <option value="eng" th:selected="${#locale.getLanguage().toString() == 'en'}" th:text="#{footer.language.en}"></option>
-                        <option value="pl" th:selected="${#locale.getLanguage().toString() == 'pl'}" th:text="#{footer.language.pl}"></option>
-                        <option disabled value="den" th:selected="${#locale.getLanguage().toString() == 'den'}" th:text="#{footer.language.den}"></option>
+                        <option value="ru" th:selected="${#locale.getLanguage().toString() == 'ru'}" th:text="#{footer.language.ru}"></option>
                     </select>
                 </label>
             </footer>
