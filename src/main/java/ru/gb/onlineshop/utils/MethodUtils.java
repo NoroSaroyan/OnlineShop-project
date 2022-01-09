@@ -1,4 +1,4 @@
-package ru.gb.onlineshop;
+package ru.gb.onlineshop.utils;
 
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;

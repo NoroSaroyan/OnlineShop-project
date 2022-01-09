@@ -1,4 +1,4 @@
-package ru.gb.service;
+package ru.gb.onlineshop.service;
 
 import org.springframework.stereotype.Service;
 import ru.gb.onlineshop.entity.Cart;

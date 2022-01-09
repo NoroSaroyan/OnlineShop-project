@@ -1,4 +1,4 @@
-package ru.gb.service;
+package ru.gb.onlineshop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

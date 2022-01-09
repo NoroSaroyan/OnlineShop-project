@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.gb.onlineshop.entity.Product;
-import ru.gb.service.CategoryService;
-import ru.gb.service.ProductService;
+import ru.gb.onlineshop.service.CategoryService;
+import ru.gb.onlineshop.service.ProductService;
 
 import java.util.List;
 
@@ -26,7 +26,7 @@ public class HomeController {
         this.productService = productService;
     }
 
-    @GetMapping(value = {"/", "/index", "/home"})
+    @GetMapping(value = {"/", "/index"})
     public String home(Model model) {
         model.addAttribute("products", getAllProducts());
         model.addAttribute("productsCount", productsCount());

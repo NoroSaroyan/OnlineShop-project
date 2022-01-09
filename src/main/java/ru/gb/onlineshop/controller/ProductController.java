@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.gb.onlineshop.entity.Product;
 import ru.gb.onlineshop.validator.ProductValidator;
-import ru.gb.service.CategoryService;
-import ru.gb.service.ProductService;
+import ru.gb.onlineshop.service.CategoryService;
+import ru.gb.onlineshop.service.ProductService;
 
 @Controller
 public class ProductController {

@@ -7,7 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 import ru.gb.onlineshop.entity.User;
-import ru.gb.service.UserService;
+import ru.gb.onlineshop.service.UserService;
 
 @Component
 public class UserValidator implements Validator {

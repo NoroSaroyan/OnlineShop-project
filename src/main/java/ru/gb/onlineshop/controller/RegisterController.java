@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.gb.onlineshop.entity.User;
 import ru.gb.onlineshop.validator.UserValidator;
-import ru.gb.service.UserService;
+import ru.gb.onlineshop.service.UserService;
 
 @Controller
 public class RegisterController {

@@ -30,20 +30,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                     .antMatchers("/*").permitAll() // This will be your home screen URL
-                    .antMatchers("/user","/user/*").permitAll()
+                    .antMatchers("/login").permitAll()
                     .antMatchers("/home/","/home/*").permitAll()
+                    .antMatchers("/registration","/registration/*").permitAll()
                     .antMatchers("/css/**").permitAll()
                     .antMatchers("/js/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
-                    .defaultSuccessUrl("/home/")
-                    .loginPage("/user/login")
+                    .defaultSuccessUrl("/home")
+                    .loginPage("/login")
                     .permitAll()
                 .and()
                     .logout()
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/user/login").permitAll();
+                        .logoutSuccessUrl("/login").permitAll();
     }
 
     @Bean
