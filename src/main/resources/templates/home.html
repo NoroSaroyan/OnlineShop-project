@@ -13,7 +13,7 @@
             <nav class="side-menu">
                 <h3>Category</h3>
                 <ul>
-                    <li th:each="cat: ${categories}"><a th:href="@{/searchByCategory(categoryId=${cat.id})}" th:text="${cat.categoryName}"></a></li>
+                    <li th:each="cat: ${categories}"><a th:href="@{/searchByCategory(categoryId=${cat.id})}" th:text="${cat.getName()}"></a></li>
                 </ul>
             </nav>
 

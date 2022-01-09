@@ -27,23 +27,19 @@ public class UserValidator implements Validator {
     public void validate(Object o, Errors errors) {
         User user = (User) o;
 
-        //Username and password can't me empty or contain whitespace
-        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "username", "error.not_empty");
+        //Email and password can't me empty or contain whitespace
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "error.not_empty");
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "error.not_empty");
 
-        // Username must have from 4 characters to 32
+        // Email must have from 4 characters to 32
         if (user.getEmail().length() < 4) {
-            errors.rejectValue("username", "register.error.username.less_4");
+            errors.rejectValue("email", "register.error.username.less_4");
         }
         if(user.getEmail().length() > 32){
-            errors.rejectValue("username","register.error.username.over_32");
-        }
-        //Username can't be duplicated
-        if (userService.findByEmail(user.getEmail()) != null) {
-            errors.rejectValue("username", "register.error.duplicated.username");
+            errors.rejectValue("email","register.error.username.over_32");
         }
         //Email can't be duplicated
-        if (userService.findByEmail(user.getEmail()) != null){
+        if (userService.checkByEmail(user.getEmail())){
             errors.rejectValue("email", "register.error.duplicated.email");
         }
         //Password must have at least 8 characters and max 32

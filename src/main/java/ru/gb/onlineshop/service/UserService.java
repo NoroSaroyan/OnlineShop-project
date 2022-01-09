@@ -31,9 +31,10 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserService(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder) {
+    public UserService(UserRepository userRepository, AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.passwordEncoder = passwordEncoder;
+        this.userRepository = userRepository;
     }
 
     public void setUserRepository(UserRepository userRepository) {
@@ -79,7 +80,7 @@ public class UserService {
     }
 
     public List<User> findAll() {
-        return userRepository.findAll();
+        return (List<User>) userRepository.findAll();
     }
 
 
@@ -100,10 +101,14 @@ public class UserService {
 
     public User findByEmail(String email) {
         Optional<User> user = userRepository.findByEmail(email);
-        if (user != null) {
+        if (user.isPresent()) {
             return user.get();
         } else {
-            throw new UsernameNotFoundException("User with Email:" + user.get().getEmail() + "is not found");
+            throw new UsernameNotFoundException("User with Email:" + email + "is not found");
         }
+    }
+
+    public boolean checkByEmail(String email) {
+        return userRepository.findByEmail(email).isPresent();
     }
 }
