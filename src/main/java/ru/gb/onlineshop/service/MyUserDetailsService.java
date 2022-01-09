@@ -39,6 +39,14 @@ public class MyUserDetailsService implements UserDetailsService {
         if (exists) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
         }
+        else{
+            exists = user.getRoles().
+                    stream().
+                    anyMatch(item-> item.getName().equals("SUPER_ADMIN"));
+            if (exists){
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_SUPER_ADMIN"));
+            }
+        }
         grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
         return grantedAuthorities;
     }

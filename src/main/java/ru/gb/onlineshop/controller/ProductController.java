@@ -3,6 +3,7 @@ package ru.gb.onlineshop.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -79,7 +80,8 @@ public class ProductController {
         return "redirect:/home";
     }
 
-    @PostMapping("/product/delete/{id}")
+//    @PreAuthorize("hasRole('SUPER_ADMIN')")
+    @GetMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable("id") long productId) {
         Product product = productService.findById(productId);
         if (product != null) {

@@ -9,8 +9,6 @@
 <div class="container">
     <h2 th:text="#{user.title}"></h2>
     <br>
-    <h3 th:text="#{user.firstname} + ': ' + ${ru.gb.onlineshop.entity.User.getFirstName()}"></h3>
-    <h3 th:text="#{user.lastname} + ': ' + ${ru.gb.onlineshop.entity.User.getLastName()}"></h3>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>

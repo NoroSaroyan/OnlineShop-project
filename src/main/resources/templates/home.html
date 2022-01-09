@@ -17,12 +17,12 @@
                 </ul>
             </nav>
 
-        <button sec:authorize="hasRole('ROLE_ADMIN')" class="btn">
+        <button sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER_ADMIN')" class="btn">
         <a th:href="@{product/new}"><i class="fas fa-plus fa-2x"></i></a>
         </button>
     <div class="col card-deck ml-5 my-3" th:if="${!products.isEmpty()}" >
                 <div class="card" th:each="product : ${products}">
-                    <div sec:authorize="hasRole('ROLE_ADMIN')" class="admin">
+                    <div sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_SUPER_ADMIN')" class="admin">
                         <button class="btn">
                             <a th:href="@{'product/delete/' + ${product.getId()}}" ><i class="fas fa-times"></i></a>
                         </button>

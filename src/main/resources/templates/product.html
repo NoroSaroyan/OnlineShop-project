@@ -31,6 +31,7 @@
                     </div>
                     <input th:if="${method} == 'new'" class="btn btn-outline-dark" type="submit" th:action="@{/product/new}" th:value="#{product.confirm}"/>
                     <input th:if="${method} == 'edit'" class="btn btn-outline-dark" type="submit" th:action="@{/product/edit/{productId}}" th:value="#{product.cancel}"/>
+                <input th:if="${method} == 'delete'" class="btn btn outline-dark" type="submit" th:action="@{/product/delete/{id}}" th:value=delete/>
                 </fieldset>
             </form>
         </div>
