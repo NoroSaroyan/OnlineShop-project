@@ -34,7 +34,7 @@ footer {
     padding-top: 5px;
 }
 
-#header-username{
+#header-username {
     color: ghostwhite;
 }
 
@@ -64,4 +64,13 @@ nav {
 #cart {
     width: 44px;
     height: 44px;
+}
+
+.myrow {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 25px;
+    margin-left: -15px
 }

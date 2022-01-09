@@ -33,14 +33,12 @@
 </a>
 
 <br>
-<div class="row">
+<div class="myrow">
     <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>">
     <a th:href="@{'/cart/checkout'}" class="col-md-1">
         <button type="button" class="btn btn-success" th:text="#{cart.checkout}"></button>
     </a>
 </div>
-</div>
-
 <div th:replace="fragments/footer :: footer"></div>
 
 </body>

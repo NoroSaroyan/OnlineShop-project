@@ -16,8 +16,8 @@
                     <h1 th:text="#{admin.create.product}"></h1>
                     <div class="form-group">
                         <label th:text="#{product.name}"></label>
-                        <input type="text" th:field="*{title}" class="form-control input-lg" title="name" autofocus="true" />
-                        <div class="alert alert-danger error-alert" th:if="${#fields.hasErrors('name')}" th:errors="*{title}"></div>
+                        <input type="text" th:field="*{title}" class="form-control input-lg" title="title" autofocus="true" />
+                        <div class="alert alert-danger error-alert" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
                     </div>
                     <div class="form-group">
                         <label th:text="#{product.desc}"></label>

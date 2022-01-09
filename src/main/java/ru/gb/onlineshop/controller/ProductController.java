@@ -33,7 +33,7 @@ public class ProductController {
     public String newProduct(Model model) {
         model.addAttribute("productForm", new Product());
         model.addAttribute("method", "new");
-        model.addAttribute("categories", categoryService.findAll());
+//        model.addAttribute("categories", categoryService.findAll());
         return "product";
     }
 
