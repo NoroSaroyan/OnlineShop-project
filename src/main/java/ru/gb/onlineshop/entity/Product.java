@@ -3,6 +3,7 @@ package ru.gb.onlineshop.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,10 +19,8 @@ public class Product {
     @Column(name = "price")
     private double price;
 
-    @Column(name= "description")
+    @Column(name = "description")
     private String description;
-
-    //TODO distinct SQL(READ)
 
 }
 

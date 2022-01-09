@@ -12,6 +12,7 @@ import ru.gb.onlineshop.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Optional;
 
 @Service("myUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
@@ -21,11 +22,12 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(username);
-        if (user == null) {
+        Optional<User> user = userRepository.findByEmail(username);
+        if (user.isEmpty()) {
             throw new UsernameNotFoundException("User name " + username + " not found");
         }
-        return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), getGrantedAuthorities(user));
+        User u = user.get();
+        return new org.springframework.security.core.userdetails.User(u.getEmail(), u.getPassword(), getGrantedAuthorities(u));
     }
 
     private Collection<GrantedAuthority> getGrantedAuthorities(User user) {

@@ -33,14 +33,13 @@ public class UserService {
         return userRepository.findById(id).orElse(null);
     }
 
-    //    @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         System.out.println("\n_________try to find user : " + email);
-        User mayBeUser = userRepository.findByEmail(email);
-        if (mayBeUser == null) {
+        Optional<User> mayBeUser = userRepository.findByEmail(email);
+        if (!mayBeUser.isPresent()) {
             throw new UsernameNotFoundException("User with username:" + email + "not found");
         }
-        ru.gb.onlineshop.entity.User user = mayBeUser;
+        ru.gb.onlineshop.entity.User user = mayBeUser.get();
         UserDetails u = org.springframework.security.core.userdetails.User.
                 withUsername(user.getEmail()).
                 password(user.getPassword()).
@@ -73,5 +72,15 @@ public class UserService {
         //TODO clone user object
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
+    }
+
+    public User findByEmail(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        if (user != null){
+        return user.get();
+        }
+        else{
+            throw new UsernameNotFoundException("User with Email:" +user.get().getEmail() + "is not found");
+        }
     }
 }
