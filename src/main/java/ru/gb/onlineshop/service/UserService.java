@@ -94,7 +94,6 @@ public class UserService {
     }
 
     public void save(User user) {
-        //TODO clone user object
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
     }

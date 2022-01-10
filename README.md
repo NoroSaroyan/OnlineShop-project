@@ -11,6 +11,7 @@ For UI part I've used **Thymeleaf** templates and CSS framework.
 
 - User registration
   - Password encoder. You will never worry about password leak.
+  - Username and password validator, as well as product validator.
 - User login
 - User role management(user,admin,super admin)
 - Product management(add,delete,edit)
@@ -20,6 +21,14 @@ For UI part I've used **Thymeleaf** templates and CSS framework.
   - checkout products in cart
   - clear all products in cart
 - Database schema migration
+
+
+### In progress
+- Searching by product name
+- Different language support
+- User order with statuses(in progress, delivered, canceled) after checkout
+- User account management
+
 
 ## Requirements
 
