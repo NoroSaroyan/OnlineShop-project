@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home", "/index", "/about", "/help", "/register", "/cart/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
-                .antMatchers("/admin/**", "/product/new").hasRole("ADMIN")
+                .antMatchers("/admin/**", "/product/new").hasAnyRole("ADMIN","SUPER_ADMIN")
                 .antMatchers("product/delete/*").hasRole("SUPER_ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()

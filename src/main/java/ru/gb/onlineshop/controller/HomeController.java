@@ -34,11 +34,11 @@ public class HomeController {
         return "home";
     }
 
-    @RequestMapping("/searchByCategory")
-    public String homePost(@RequestParam("categoryId") long categoryId, Model model) {
-        model.addAttribute("books", productService.findAllByCategoryId(categoryId));
-        model.addAttribute("booksCount", productService.count());
-        model.addAttribute("categories", categoryService.findAll());
+    //TODO fix
+    @RequestMapping("/searchByProductTitle")
+    public String homePost(@RequestParam("productTitle") String title, Model model) {
+        model.addAttribute("products", productService.search(title));
+        model.addAttribute("products count", productService.count());
         return "home";
     }
 

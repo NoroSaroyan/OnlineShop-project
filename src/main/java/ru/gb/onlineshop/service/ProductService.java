@@ -50,6 +50,10 @@ public class ProductService{
         return productRepository.findAll();
     }
 
+    public List<Product> search(String title){
+        return productRepository.findAllByTitleLike(title);
+    }
+
     public long count() {
         return productRepository.count();
     }
