@@ -28,13 +28,13 @@
 </div>
 
 <br>
-<a th:href="@{'/cart/clear/'}" class="col-md-1">
+<a th:href="@{'/cart/clear/'}" class="col-3">
     <button type="button" class="btn btn-info" th:text="#{cart.clear}"></button>
 </a>
 
 <br>
-<div class="myrow">
-    <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>">
+<div class="col-3">
+    <h3 th:text="#{cart.total} + ' ' + ${totalPrice}"></h3>
     <a th:href="@{'/cart/checkout'}" class="col-md-1">
         <button type="button" class="btn btn-success" th:text="#{cart.checkout}"></button>
     </a>

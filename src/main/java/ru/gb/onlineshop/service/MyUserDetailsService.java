@@ -1,5 +1,7 @@
 package ru.gb.onlineshop.service;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -7,15 +9,19 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import ru.gb.onlineshop.entity.Role;
 import ru.gb.onlineshop.entity.User;
 import ru.gb.onlineshop.repository.UserRepository;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service("myUserDetailsService")
 public class MyUserDetailsService implements UserDetailsService {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyUserDetailsService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -31,23 +37,21 @@ public class MyUserDetailsService implements UserDetailsService {
     }
 
     private Collection<GrantedAuthority> getGrantedAuthorities(User user) {
+        logger.warn("trying to get granted for user : " + user.getEmail());
         Collection<GrantedAuthority> grantedAuthorities = new ArrayList<>();
-       boolean exists = user.getRoles()
-                .stream()
-                .anyMatch(item -> item.getName().equals("ADMIN"));
-
-        if (exists) {
-            grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }
-        else{
-            exists = user.getRoles().
-                    stream().
-                    anyMatch(item-> item.getName().equals("SUPER_ADMIN"));
-            if (exists){
+        for (Role role : user.getRoles()) {
+            String rName = role.getName().toUpperCase(Locale.ROOT);
+            if (rName.equals("ADMIN")) {
+                logger.warn("role admin");
+                grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+            } else if (rName.equals("SUPER_ADMIN")) {
+                logger.warn("role super admin");
                 grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_SUPER_ADMIN"));
+            } else {
+                logger.warn("role user");
+                grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
             }
         }
-        grantedAuthorities.add(new SimpleGrantedAuthority("USER"));
         return grantedAuthorities;
     }
 }
