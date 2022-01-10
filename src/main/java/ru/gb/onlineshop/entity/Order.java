@@ -21,7 +21,6 @@ public class Order {
     @Column(name = "price")
     private double price;
 
-    //TODO - do we need a status object?
     @Column(name = "status")
     private String status;
 

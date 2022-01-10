@@ -13,7 +13,6 @@ import ru.gb.onlineshop.service.ProductService;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/")
 public class HomeController {
     private ProductService productService;
 

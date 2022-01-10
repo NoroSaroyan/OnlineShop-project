@@ -39,7 +39,5 @@ public class User {
     public User() {
 
     }
-
-    //TODO read sql constraints
 }
 

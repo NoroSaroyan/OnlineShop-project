@@ -6,5 +6,4 @@ import ru.gb.onlineshop.entity.Category;
 
 @Repository
 public interface CategoryRepository extends PagingAndSortingRepository<Category, Long> {
-//    Category findByCategoryName(String name);
 }

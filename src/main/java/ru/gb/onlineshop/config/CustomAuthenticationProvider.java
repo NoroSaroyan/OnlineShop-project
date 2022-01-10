@@ -12,9 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component("customAuthenticationProvider")
-//@ComponentScan("ru.gb.onlineshop")
 public class CustomAuthenticationProvider implements AuthenticationProvider {
-    //    @Qualifier("myUserDetailsService")
     private UserDetailsService userDetailsService;
 
     @Autowired

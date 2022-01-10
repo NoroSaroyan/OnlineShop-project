@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.gb.onlineshop.entity.Role;
 import ru.gb.onlineshop.entity.User;
-import ru.gb.onlineshop.repository.RoleRepository;
 import ru.gb.onlineshop.validator.UserValidator;
 import ru.gb.onlineshop.service.UserService;
 
