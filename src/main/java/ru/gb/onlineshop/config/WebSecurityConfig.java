@@ -31,12 +31,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/", "/home", "/index", "/about", "/help", "/register").permitAll()
-                .antMatchers("/user/**").hasAuthority("ROLE_USER")
+                .antMatchers("/user/**").hasAuthority("USER")
                 .antMatchers("/admin/**", "/product/new").hasAnyAuthority("ROLE_ADMIN","ROLE_SUPER_ADMIN")
                 .antMatchers("/product/delete/*").hasAuthority("ROLE_SUPER_ADMIN")
                 .antMatchers("/product/new","/product/edit/*").hasAnyAuthority("ROLE_ADMIN","ROLE_SUPER_ADMIN")
-                .antMatchers("/cart/add/*").hasAnyAuthority("ROLE_USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
-                .antMatchers("/cart/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart/add/*").hasAnyAuthority("USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart").hasAnyAuthority("USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart/remove/*").hasAnyAuthority("USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart/clear").hasAnyAuthority("USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart/checkout").hasAnyAuthority("USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()
                 .and().headers().frameOptions().sameOrigin();
