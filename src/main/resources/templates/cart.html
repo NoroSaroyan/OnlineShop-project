@@ -13,8 +13,8 @@
         <h2 th:text="#{cart.title}"></h2>
         <div class="card" th:each="product : ${products.entrySet()}">
             <h3 th:text="${product.getKey().getTitle()}"></h3>
-            <h4 th:text="${product.getValue()}"></h4>
-            <h4 th:text="${product.getKey().getPrice()}"></h4>
+            <h4 th:text="#{cart.product.count} + ' ' + ${product.getValue()}"></h4>
+            <h4 th:text="#{cart.product.price} + ' ' + ${product.getKey().getPrice()}"></h4>
             <a th:href="@{'/cart/remove/{id}'(id=${product.getKey().getId()})}" class="col-md-1">
                 <button type="button" class="btn btn-primary" th:text="#{cart.remove}"></button>
             </a>

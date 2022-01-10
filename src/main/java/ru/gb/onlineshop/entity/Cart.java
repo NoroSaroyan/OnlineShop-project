@@ -20,5 +20,4 @@ public class Cart {
     //TODO targetEntity or mappedById
     @OneToMany(targetEntity = Product.class)
     protected List<Product> products;
-
 }
