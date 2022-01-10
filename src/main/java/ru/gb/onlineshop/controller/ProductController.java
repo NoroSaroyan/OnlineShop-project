@@ -34,7 +34,6 @@ public class ProductController {
     public String newProduct(Model model) {
         model.addAttribute("productForm", new Product());
         model.addAttribute("method", "new");
-//        model.addAttribute("categories", categoryService.findAll());
         return "product";
     }
 
@@ -80,7 +79,6 @@ public class ProductController {
         return "redirect:/home";
     }
 
-//    @PreAuthorize("hasRole('SUPER_ADMIN')")
     @GetMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable("id") long productId) {
         Product product = productService.findById(productId);

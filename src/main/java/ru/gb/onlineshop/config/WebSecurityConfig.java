@@ -34,6 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user/**").hasAuthority("ROLE_USER")
                 .antMatchers("/admin/**", "/product/new").hasAnyAuthority("ROLE_ADMIN","ROLE_SUPER_ADMIN")
                 .antMatchers("/product/delete/*").hasAuthority("ROLE_SUPER_ADMIN")
+                .antMatchers("/product/new","/product/edit/*").hasAnyAuthority("ROLE_ADMIN","ROLE_SUPER_ADMIN")
+                .antMatchers("/cart/add/*").hasAnyAuthority("ROLE_USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
                 .antMatchers("/cart/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN","ROLE_SUPER_ADMIN")
                 .and().formLogin().loginPage("/login").permitAll()
                 .and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll()

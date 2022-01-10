@@ -55,37 +55,4 @@ public class HomeController {
         return productService.count();
     }
 
-
-//    private final CartService cartService;
-//
-//    @Autowired
-//    public HomeController(@Qualifier("cartService") CartService service) {
-//        this.cartService = service;
-//    }
-//
-//    @GetMapping("/")
-//    public String home(Model model) {
-//        return "user/home";
-//    }
-//
-//    @GetMapping("/catalog")
-//    public String catalog(Model model) {
-//        return "product/products";
-//    }
-//
-//    @GetMapping("/cart")
-//    public String cart(Model model, Principal principal){
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//        String name = principal.getName();
-//        System.out.println(name);
-//        System.out.println("___________");
-//        Cart cart = cartService.findUserByUserEmail(name);
-//        model.addAttribute("cart",cart);
-//        return "cart/carts";
-//    }
-//
-//    @GetMapping("/cart-add")
-//    public String addToCart(Model model){
-//        return "/cart/cartToAdd";
-//    }
 }

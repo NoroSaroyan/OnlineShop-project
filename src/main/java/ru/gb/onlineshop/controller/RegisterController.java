@@ -10,9 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import ru.gb.onlineshop.entity.Role;
 import ru.gb.onlineshop.entity.User;
+import ru.gb.onlineshop.repository.RoleRepository;
 import ru.gb.onlineshop.validator.UserValidator;
 import ru.gb.onlineshop.service.UserService;
+
+import java.util.Arrays;
 
 @Controller
 public class RegisterController {
@@ -41,7 +45,10 @@ public class RegisterController {
             logger.error(String.valueOf(bindingResult.getFieldError()));
             return "register";
         }
-
+        Role role = new Role();
+        role.setName("USER");
+        role.setId(1L);
+        userForm.setRoles(Arrays.asList(role));
         userService.save(userForm);
         userService.loadUserByUsername(userForm.getEmail());
 
